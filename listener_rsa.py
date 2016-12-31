@@ -13,9 +13,6 @@ random_generator = Random.new().read
 key = RSA.generate(2048, random_generator)
 public_key = key.publickey()
 
-#signature_text = 'Cal0X'
-#hash = SHA26.new(signature_text).digest()
-
 s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 try:
     s.bind(("0.0.0.0", 4444))
@@ -44,7 +41,7 @@ def clienthandle(client) :
 
 while True:
     (client, (ip, port)) = s.accept()
-    print "Recieved connection from : ", ip
+    print "Received connection from : ", ip
     start_new_thread(clientthread_sendpublickey, (client,))
     print "Public Key sent to", ip
     start_new_thread(clienthandle, (client,))
